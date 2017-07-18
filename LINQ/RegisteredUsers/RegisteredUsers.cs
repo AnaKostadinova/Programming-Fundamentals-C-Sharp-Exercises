@@ -13,24 +13,22 @@ public class RegisteredUsers
         {
             string[] elements = registry.Split(new string[] {" -> "}, StringSplitOptions.RemoveEmptyEntries);
             string name = elements[0];
-            DateTime date =DateTime.ParseExact(elements[1],"dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime date = DateTime.ParseExact(elements[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-           usersData.Add(name,date);
+            usersData.Add(name, date);
 
             registry = Console.ReadLine();
         }
-        var sortedRegistry = usersData
+        usersData = usersData
             .Reverse()
+            .OrderBy(x => x.Value)
             .Take(5)
+            .OrderByDescending(x => x.Value)
+            .ToDictionary(x => x.Key, x => x.Value);
 
-            .OrderByDescending(x=>x.Value)
-        .ToDictionary(x => x.Key, x => x.Value);
-
-        foreach (var kvp in sortedRegistry)
+        foreach (var kvp in usersData)
         {
             Console.WriteLine(kvp.Key);
         }
-
-
     }
 }
