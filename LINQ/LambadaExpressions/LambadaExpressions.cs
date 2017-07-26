@@ -9,7 +9,7 @@ public class LambadaExpressions
         Dictionary<string, Dictionary<string, string>> lambadaExpressions =
             new Dictionary<string, Dictionary<string, string>>();
 
-        string[] input = Console.ReadLine().Split(new[] {" => ", "."}, StringSplitOptions.RemoveEmptyEntries);
+        string[] input = Console.ReadLine().Split(new[] { " => ", "." }, StringSplitOptions.RemoveEmptyEntries);
 
         while (input[0] != "lambada")
         {
@@ -28,8 +28,8 @@ public class LambadaExpressions
                 }
                 lambadaExpressions[input[0]][input[1]] = input[2];
             }
-            
-            input = Console.ReadLine().Split(new[] {" => ", "."}, StringSplitOptions.RemoveEmptyEntries);
+
+            input = Console.ReadLine().Split(new[] { " => ", "." }, StringSplitOptions.RemoveEmptyEntries);
         }
 
         foreach (var kvp in lambadaExpressions)
