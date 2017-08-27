@@ -79,4 +79,50 @@ namespace DistanceBetweenPoints
     }
 }
 
+    using System;
+using System.Linq;
+
+namespace test9
+{
+    public class Point
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public static Point ParsePoint(string input)
+        {
+            int[] inputElements = input.Split().Select(Int32.Parse).ToArray();
+
+            return new Point(inputElements[0], inputElements[1]);
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Point firstPoint = Point.ParsePoint(Console.ReadLine());
+            Point secondPoint = Point.ParsePoint(Console.ReadLine());
+
+            double distance = CalcDistance(firstPoint, secondPoint);
+
+            Console.WriteLine($"{distance:f3}");
+        }
+
+        public static double CalcDistance(Point firstPoint, Point secondPoint)
+        {
+            double sideA = Math.Pow((firstPoint.X - secondPoint.X), 2);
+            double sideB = Math.Pow((firstPoint.Y - secondPoint.Y), 2);
+
+            return Math.Sqrt(sideA + sideB);
+        }
+    }
+}
+
     */
